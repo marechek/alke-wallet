@@ -1,0 +1,109 @@
+:root {
+    --color-violet-primary: #5B2EFF;
+    --color-violet-dark: #4522CC;
+    --color-blue-primary: #0D2B45;
+    --color-blue-secondary: #163B5B;
+    --color-success: #2ECC71;
+    --color-warning: #F1C40F;
+    --color-error: #E74C3C;
+    --color-black: #0B0E14;
+    --color-dark-gray: #1C1F26;
+    --color-gray: #6C757D;
+    --color-light-gray: #E9ECEF;
+    --color-bg-light: #F8F9FB;
+    --color-white: #FFFFFF;
+
+    --text-primary: #0B0E14;
+    --text-secondary: #6C757D;
+    --text-inverse: #FFFFFF;
+
+    --border-color: #DEE2E6;
+    --card-bg: #FFFFFF;
+
+    --gradient-primary: linear-gradient(135deg, #5B2EFF, #0D2B45);
+    --gradient-secondary: linear-gradient(135deg, #0D2B45, #5B2EFF);
+
+    --hover-opacity: 0.9;
+    --disabled-opacity: 0.6;
+}
+
+body {
+    background-color: var(--color-bg-light);
+    color: var(--text-primary);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+}
+
+.btn-primary {
+    background: var(--gradient-primary);
+    border: none;
+    color: var(--text-inverse);
+}
+
+.btn-primary:hover {
+    opacity: var(--hover-opacity);
+}
+
+.btn-secondary {
+    background-color: var(--color-blue-secondary);
+    border: none;
+    color: var(--text-inverse);
+}
+
+.btn-secondary:hover {
+    opacity: var(--hover-opacity);
+}
+
+.btn:disabled {
+    opacity: var(--disabled-opacity);
+}
+
+.form-control {
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.form-control:focus {
+    border-color: var(--color-violet-primary);
+    box-shadow: 0 0 0 0.15rem rgba(91, 46, 255, 0.25);
+}
+
+.alert-success {
+    background-color: rgba(46, 204, 113, 0.15);
+    color: var(--color-success);
+}
+
+.alert-danger {
+    background-color: rgba(231, 76, 60, 0.15);
+    color: var(--color-error);
+}
+
+.badge-success {
+    background-color: var(--color-success);
+}
+
+.badge-warning {
+    background-color: var(--color-warning);
+}
+
+.badge-error {
+    background-color: var(--color-error);
+}
+
+.navbar {
+    background-color: var(--color-black);
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+    color: var(--text-inverse);
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--color-violet-primary);
+}
