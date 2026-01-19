@@ -35,15 +35,26 @@ function showMessage(text, type = "success") {
 function addTransaction(type, amount, description) {
     const transactions = JSON.parse(localStorage.getItem('transactions')) || [];
 
+    const now = new Date();
+
+    const day = String(now.getDate()).padStart(2, '0');
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const year = now.getFullYear();
+    const hour = String(now.getHours()).padStart(2, '0');
+    const minute = String(now.getMinutes()).padStart(2, '0');
+
+    const formattedDate = `${day}-${month}-${year} ${hour}:${minute}`;
+
     transactions.unshift({
         type,
         amount,
         description,
-        date: new Date().toLocaleString('es-CL')
+        date: formattedDate
     });
 
     localStorage.setItem('transactions', JSON.stringify(transactions));
 }
+
 
 function renderContacts(filter = "") {
     tableBody.innerHTML = "";
@@ -86,30 +97,58 @@ searchInput.addEventListener("input", e => {
 form.addEventListener("submit", e => {
     e.preventDefault();
 
-    const monto = parseInt(document.getElementById("monto").value);
+    const montoInput = document.getElementById("monto");
+    const destinatario = destinatarioInput.value.trim();
+    const monto = Number(montoInput.value);
 
-    if (monto <= 0) {
-        mensaje.innerHTML = `<div class="alert alert-warning">Monto inválido</div>`;
+    if (!destinatario) {
+        showMessage("Debes seleccionar un destinatario", "warning");
+        return;
+    }
+
+    if (isNaN(monto) || monto <= 0) {
+        showMessage("Monto inválido", "warning");
         return;
     }
 
     if (monto > saldo) {
-        mensaje.innerHTML = `<div class="alert alert-danger">Saldo insuficiente</div>`;
+        showMessage("Saldo insuficiente", "danger");
         return;
     }
 
+    // Actualiza saldo
     saldo -= monto;
     localStorage.setItem("balance", saldo);
 
-    showMessage("Envio de dinero realizado correctamente", "success");
+    // Crear transacción segura
+    const transactions = JSON.parse(localStorage.getItem('transactions')) || [];
 
-    addTransaction('send', monto, `Envío a ${destinatarioInput.value}`);
-    showMessage('Dinero enviado correctamente', 'success');
+    // Fecha segura
+    const now = new Date();
+    const formattedDate = now.getFullYear() + '-' +
+                          String(now.getMonth() + 1).padStart(2, '0') + '-' +
+                          String(now.getDate()).padStart(2, '0') + ' ' +
+                          String(now.getHours()).padStart(2, '0') + ':' +
+                          String(now.getMinutes()).padStart(2, '0')
+
+    transactions.unshift({
+        type: 'send',
+        amount: monto,
+        description: `Envío a ${destinatario}`,
+        date: formattedDate
+    });
+
+    localStorage.setItem('transactions', JSON.stringify(transactions));
+
+    // Mensaje
+    showMessage(`Dinero enviado correctamente: $${monto.toLocaleString("es-CL")}`, "success");
 
     setTimeout(() => {
         window.location.href = "menu.html";
     }, 1500);
 });
+
+
 
 document.getElementById("addContactForm").addEventListener("submit", e => {
     e.preventDefault();
