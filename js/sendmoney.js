@@ -24,8 +24,6 @@ const form = document.getElementById("sendForm");
 let saldo = Number(localStorage.getItem("balance"));
 if (isNaN(saldo)) saldo = 0;
 
-console.log("Saldo disponible:", saldo);
-
 function showMessage(text, type = "success") {
     mensaje.innerHTML = `
         <div class="alert alert-${type} text-center">
@@ -34,6 +32,18 @@ function showMessage(text, type = "success") {
     `;
 }
 
+function addTransaction(type, amount, description) {
+    const transactions = JSON.parse(localStorage.getItem('transactions')) || [];
+
+    transactions.unshift({
+        type,
+        amount,
+        description,
+        date: new Date().toLocaleString('es-CL')
+    });
+
+    localStorage.setItem('transactions', JSON.stringify(transactions));
+}
 
 function renderContacts(filter = "") {
     tableBody.innerHTML = "";
@@ -93,9 +103,12 @@ form.addEventListener("submit", e => {
 
     showMessage("Envio de dinero realizado correctamente", "success");
 
+    addTransaction('send', monto, `Envío a ${destinatarioInput.value}`);
+    showMessage('Dinero enviado correctamente', 'success');
+
     setTimeout(() => {
         window.location.href = "menu.html";
-    }, 3000);
+    }, 1500);
 });
 
 document.getElementById("addContactForm").addEventListener("submit", e => {
