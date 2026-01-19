@@ -19,6 +19,9 @@ $(document).ready(function () {
             showMessage('Login exitoso. Redirigiendo...', 'success');
 
             localStorage.setItem('loggedUser', email);
+            if (!localStorage.getItem('balance')) {
+                localStorage.setItem('balance', 0);
+            }
 
             setTimeout(() => {
                 window.location.href = 'menu.html';
