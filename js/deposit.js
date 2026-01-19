@@ -33,8 +33,22 @@ $(document).ready(function () {
         balance += amount;
         setBalance(balance);
 
-        showMessage('Depósito realizado correctamente', 'success');
+
+        
+        showMessage('Depósito realizado correctamente. Monto: $' + Number(amount).toLocaleString("es-CL"), 'success');
         $('#amount').val('');
+
+        try {
+            addTransaction('deposit', amount, 'Depósito de saldo');
+        } catch (e) {
+            console.error('Error en addTransaction:', e);
+        }
+
+
+
+        setTimeout(() => {
+            window.location.href = 'menu.html';
+        }, 1500);
     });
 
     $('#withdrawBtn').on('click', function () {
@@ -55,8 +69,20 @@ $(document).ready(function () {
         balance -= amount;
         setBalance(balance);
 
-        showMessage('Retiro realizado correctamente', 'success');
+        
+
+        showMessage('Retiro realizado correctamente. Monto: -$' + Number(amount).toLocaleString("es-CL"), 'success');
         $('#amount').val('');
+
+        try {
+            addTransaction('withdraw', amount, 'Retiro de saldo');
+        } catch (e) {
+            console.error('Error en addTransaction:', e);
+        }
+
+        setTimeout(() => {
+            window.location.href = "menu.html";
+        }, 1500);
     });
 
 });

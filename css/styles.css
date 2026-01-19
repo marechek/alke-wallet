@@ -124,3 +124,60 @@ body {
 .navbar a:active {
     color: var(--color-violet-dark);
 }
+
+.wallet-card table thead {
+    background-color: #12121b;
+    color: #ffffff;
+}
+
+.wallet-card table tbody tr {
+    background-color: #1e1e2f;
+    color: #ffffff;
+}
+
+.wallet-card table tbody tr:nth-child(even) {
+    background-color: #2a2a40;
+}
+
+.wallet-card table tbody tr:hover {
+    background-color: #3a3a5a;
+}
+
+.card-actions {
+    min-height: 104px;
+}
+
+.btn-placeholder {
+    height: 44px;
+}
+
+.card-text-zone {
+    min-height: 5.5rem;
+}
+
+.card-buttons {
+    margin-top: 16px;
+}
+
+/* Forzamos layout mobile hasta 767px */
+@media (max-width: 767px) {
+
+    .card {
+        min-width: 360px;
+    }
+
+    .card-text-zone {
+        min-height: 5.5rem;
+    }
+
+    .card-buttons .btn {
+        min-height: 44px; /* touch friendly */
+        font-size: 1rem;
+    }
+
+}
+
+/* Evita que el layout se comprima antes de 360px */
+body {
+    min-width: 360px;
+}
