@@ -57,6 +57,10 @@ $(document).ready(function () {
 
         showMessage('Retiro realizado correctamente', 'success');
         $('#amount').val('');
+
+        setTimeout(() => {
+            window.location.href = "menu.html";
+        }, 3000);
     });
 
 });
