@@ -15,7 +15,7 @@ Desarrollar una aplicación de billetera digital que permita a los usuarios:
 * Acceder mediante credenciales seguras (simuladas)
 * Visualizar su saldo disponible
 * Realizar depósitos y retiros de dinero
-* Enviar fondos a otros usuarios dentro de la aplicación
+* Enviar fondos a otros usuarios dentro de la aplicación y Recibir fondos (simulados - Monto: $ 10.000 fijos por transacción)
 * Consultar el historial de transacciones
 
 Todo a través de una interfaz clara, funcional y fácil de usar.
@@ -144,6 +144,28 @@ Se prioriza:
 
 ---
 
+## 🧩 Decisiones Técnicas y Buenas Prácticas
+
+* Separación de archivos JavaScript por funcionalidad para mejorar la legibilidad y el mantenimiento del código.
+* Uso de archivos *helper* para centralizar lógica reutilizable y evitar duplicación de código.
+* Organización clara de carpetas (HTML, CSS y JS) respetando el principio de separación de responsabilidades.
+* Flujo de navegación controlado para evitar accesos a pantallas sin haber iniciado sesión.
+
+---
+
+## 🔍 Reflexión y Mejoras Futuras
+
+El desarrollo de este proyecto permitió aplicar conceptos fundamentales de desarrollo Front-End como manipulación del DOM, manejo de eventos, uso de librerías externas (Bootstrap y jQuery) y estructuración de un proyecto web.
+
+Como posibles mejoras futuras, se podría:
+
+* Agregar validaciones más robustas en formularios.
+* Incorporar distintos roles de usuario.
+* Mejorar la simulación de seguridad en el proceso de autenticación.
+* Optimizar la experiencia visual con animaciones o feedback más avanzado.
+
+---
+
 ## 🔄 Control de Versiones
 
 El proyecto se gestiona utilizando **Git y GitHub**, realizando commits por cada pantalla o funcionalidad terminada.
@@ -157,7 +179,7 @@ El proyecto se gestiona utilizando **Git y GitHub**, realizando commits por cada
 
 Para poder probar la aplicación, utiliza las siguientes credenciales **simuladas**:
 
-* **Usuario:** [admin@alkewallet.cl]
+* **Usuario:** [admin@alkewallet.cl](mailto:admin@alkewallet.cl)
 * **Contraseña:** 1234
 
 > Estas credenciales son solo para fines académicos y de demostración.
@@ -174,7 +196,7 @@ Para poder probar la aplicación, utiliza las siguientes credenciales **simulada
 
    * Visualizar el saldo disponible
    * Realizar depósitos y retiros
-   * Enviar dinero a otros usuarios y Recibir fondos (simulados automaticamente - Monto: $ 10.000)
+   * Enviar dinero a otros usuarios
    * Consultar el historial de transacciones
 
 ---
@@ -203,3 +225,4 @@ Proyecto desarrollado por **Marcos Elias** como parte de un desafío de desarrol
 ## 📌 Notas Finales
 
 Este proyecto es una **simulación educativa**. No maneja dinero real ni se conecta a servicios financieros externos. Su objetivo es demostrar conocimientos de desarrollo Front-End, lógica en JavaScript y buenas prácticas en la estructuración de proyectos web.
+
