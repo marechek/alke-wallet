@@ -159,7 +159,7 @@ El desarrollo de este proyecto permitió aplicar conceptos fundamentales de desa
 
 Como posibles mejoras futuras, se podría:
 
-* Agregar validaciones más robustas en formularios.
+* Agregar validaciones más robustas en formularios. 
 * Incorporar distintos roles de usuario.
 * Mejorar la simulación de seguridad en el proceso de autenticación.
 * Optimizar la experiencia visual con animaciones o feedback más avanzado.
@@ -212,7 +212,7 @@ git clone https://github.com/marechek/alke-wallet.git
 2. Abrir el proyecto:
 
 * Abrir el archivo `index.html` en el navegador
-* No requiere instalación de dependencias ni servidor
+* No requiere instalación de dependencias ni servidor 
 
 ---
 
