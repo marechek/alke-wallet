@@ -33,8 +33,14 @@ $(document).ready(function () {
         balance += amount;
         setBalance(balance);
 
-        showMessage('Depósito realizado correctamente', 'success');
+
+        
+        showMessage('Depósito realizado correctamente. Monto: $' + Number(amount).toLocaleString("es-CL"), 'success');
         $('#amount').val('');
+
+        setTimeout(() => {
+            window.location.href = "menu.html";
+        }, 3000);
     });
 
     $('#withdrawBtn').on('click', function () {
@@ -55,7 +61,7 @@ $(document).ready(function () {
         balance -= amount;
         setBalance(balance);
 
-        showMessage('Retiro realizado correctamente', 'success');
+        showMessage('Retiro realizado correctamente. Monto: -$' + Number(amount).toLocaleString("es-CL"), 'success');
         $('#amount').val('');
 
         setTimeout(() => {
