@@ -1,3 +1,7 @@
+if (!localStorage.getItem('loggedUser')) {
+    window.location.href = 'login.html';
+}
+
 let contacts = JSON.parse(localStorage.getItem("contacts")) || [
     {
         nombre: "Juan Pérez",
@@ -31,30 +35,6 @@ function showMessage(text, type = "success") {
         </div>
     `;
 }
-
-function addTransaction(type, amount, description) {
-    const transactions = JSON.parse(localStorage.getItem('transactions')) || [];
-
-    const now = new Date();
-
-    const day = String(now.getDate()).padStart(2, '0');
-    const month = String(now.getMonth() + 1).padStart(2, '0');
-    const year = now.getFullYear();
-    const hour = String(now.getHours()).padStart(2, '0');
-    const minute = String(now.getMinutes()).padStart(2, '0');
-
-    const formattedDate = `${day}-${month}-${year} ${hour}:${minute}`;
-
-    transactions.unshift({
-        type,
-        amount,
-        description,
-        date: formattedDate
-    });
-
-    localStorage.setItem('transactions', JSON.stringify(transactions));
-}
-
 
 function renderContacts(filter = "") {
     tableBody.innerHTML = "";
@@ -120,17 +100,19 @@ form.addEventListener("submit", e => {
     saldo -= monto;
     localStorage.setItem("balance", saldo);
 
-    // Crear transacción segura
+    // Obtener transacciones
     const transactions = JSON.parse(localStorage.getItem('transactions')) || [];
 
-    // Fecha segura
+    // Fecha segura (NO produce NaN)
     const now = new Date();
     const formattedDate = now.getFullYear() + '-' +
-                          String(now.getMonth() + 1).padStart(2, '0') + '-' +
-                          String(now.getDate()).padStart(2, '0') + ' ' +
-                          String(now.getHours()).padStart(2, '0') + ':' +
-                          String(now.getMinutes()).padStart(2, '0')
+        String(now.getMonth() + 1).padStart(2, '0') + '-' +
+        String(now.getDate()).padStart(2, '0') + ' ' +
+        String(now.getHours()).padStart(2, '0') + ':' +
+        String(now.getMinutes()).padStart(2, '0');
 
+
+    // Registrar transacción
     transactions.unshift({
         type: 'send',
         amount: monto,
@@ -140,15 +122,16 @@ form.addEventListener("submit", e => {
 
     localStorage.setItem('transactions', JSON.stringify(transactions));
 
-    // Mensaje
+    // Mensaje éxito
     showMessage(`Dinero enviado correctamente: $${monto.toLocaleString("es-CL")}`, "success");
+
+    // 🔒 Evita doble envío
+    form.querySelector('button[type="submit"]').disabled = true;
 
     setTimeout(() => {
         window.location.href = "menu.html";
     }, 1500);
 });
-
-
 
 document.getElementById("addContactForm").addEventListener("submit", e => {
     e.preventDefault();

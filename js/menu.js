@@ -7,12 +7,15 @@ $(document).ready(function () {
         return;
     }
 
-    let balance = localStorage.getItem("balance");
+    $("#email").text(loggedUser);
 
-    if (balance === null) {
+    let balance = Number(localStorage.getItem("balance"));
+
+    if (isNaN(balance)) {
         balance = 0;
         localStorage.setItem("balance", balance);
     }
+
 
     $("#balance").text(
         Number(balance).toLocaleString("es-CL")

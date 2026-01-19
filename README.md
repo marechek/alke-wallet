@@ -30,6 +30,8 @@ Todo a través de una interfaz clara, funcional y fácil de usar.
 * **JavaScript (ES6)** – Lógica de la aplicación
 * **jQuery** – Manipulación del DOM y eventos
 * **Git & GitHub** – Control de versiones
+* **LocalStorage** – Persistencia de datos simulada en el navegador
+
 
 ---
 
@@ -105,6 +107,7 @@ El usuario siempre retorna al **menú principal** luego de completar una acción
 * Envío de fondos a usuarios simulados
 * Validación de saldo disponible
 * Registro del movimiento
+* Gestión y persistencia de contactos frecuentes
 
 ### 📄 Historial de Transacciones
 
@@ -150,6 +153,8 @@ Se prioriza:
 * Uso de archivos *helper* para centralizar lógica reutilizable y evitar duplicación de código.
 * Organización clara de carpetas (HTML, CSS y JS) respetando el principio de separación de responsabilidades.
 * Flujo de navegación controlado para evitar accesos a pantallas sin haber iniciado sesión.
+* Las fechas de las transacciones se almacenan como strings en formato estándar (`YYYY-MM-DD HH:mm`) y se formatean manualmente para su visualización, evitando inconsistencias de parsing entre navegadores.
+
 
 ---
 
@@ -163,6 +168,8 @@ Como posibles mejoras futuras, se podría:
 * Incorporar distintos roles de usuario.
 * Mejorar la simulación de seguridad en el proceso de autenticación.
 * Optimizar la experiencia visual con animaciones o feedback más avanzado.
+* Unificar la lógica de manejo de saldo y transacciones en un módulo centralizado.
+
 
 ---
 

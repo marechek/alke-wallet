@@ -22,7 +22,7 @@ $(document).ready(function () {
     }
 
     $('#depositBtn').on('click', function () {
-        const amount = parseInt($('#amount').val());
+        const amount = parseInt($('#amount').val(), 10);
 
         if (!amount || amount <= 0) {
             showMessage('Ingrese un monto válido', 'danger');
@@ -39,12 +39,13 @@ $(document).ready(function () {
         $('#amount').val('');
 
         try {
+            // Registra la transacción en el historial (definido en transactions-helper.js)
             addTransaction('deposit', amount, 'Depósito de saldo');
         } catch (e) {
             console.error('Error en addTransaction:', e);
         }
 
-
+    $('#depositBtn, #withdrawBtn').prop('disabled', true);
 
         setTimeout(() => {
             window.location.href = 'menu.html';
@@ -52,7 +53,7 @@ $(document).ready(function () {
     });
 
     $('#withdrawBtn').on('click', function () {
-        const amount = parseInt($('#amount').val());
+        const amount = parseInt($('#amount').val(), 10);
 
         if (!amount || amount <= 0) {
             showMessage('Ingrese un monto válido', 'danger');
@@ -75,6 +76,7 @@ $(document).ready(function () {
         $('#amount').val('');
 
         try {
+            // Registra la transacción en el historial (definido en transactions-helper.js)
             addTransaction('withdraw', amount, 'Retiro de saldo');
         } catch (e) {
             console.error('Error en addTransaction:', e);
