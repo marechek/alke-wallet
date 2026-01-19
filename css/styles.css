@@ -107,3 +107,20 @@ body {
 .navbar-nav .nav-link:hover {
     color: var(--color-violet-primary);
 }
+
+.navbar a,
+.navbar .navbar-brand,
+.navbar .navbar-text {
+    color: var(--text-inverse);
+    text-decoration: none;
+}
+
+.navbar a:hover,
+.navbar a:focus {
+    color: var(--color-violet-primary);
+    text-decoration: none;
+}
+
+.navbar a:active {
+    color: var(--color-violet-dark);
+}
